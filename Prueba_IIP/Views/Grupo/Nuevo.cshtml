@@ -1,0 +1,21 @@
+﻿@model Prueba_IIP.Model.ViewModel.GrupoViewModel
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo</h2>
+<div>
+    <div>
+        @using (Html.BeginForm("Nuevo", "Grupo", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(d => d.NombreGrupo, new { @class = "form-content" })
+            @Html.TextBoxFor(d => d.NombreGrupo, new { @class = "form-control" })
+            <br />
+
+            <div style="text-align:left;">
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
+    </div>
+</div>

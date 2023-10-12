@@ -1,0 +1,42 @@
+﻿@model List<Prueba_IIP.Model.TableViewModel.GrupoTableViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Nuevo", "Nuevo", "Grupo", new { }, new { @class = "btn btn-primary" })
+<div class="row">
+    <div class="col-lg-5">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    ID
+                </td>
+                <td>
+                    Descripcion
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            @foreach (var oMarca in Model)
+            {
+                <tr>
+                    <td>
+                        @oMarca.idGrupo
+                    </td>
+                    <td>
+                        @oMarca.nombreGrupo
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" onclick="document.location.href = '@Url.Content("~/Grupo/Editar/"+@oMarca.idGrupo)' ">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="document.location.href = '@Url.Content("~/Grupo/Eliminar/"+@oMarca.idGrupo)' ">Eliminar</button>
+                    </td>
+                </tr>
+       }
+        </table>
+    </div>
+</div>

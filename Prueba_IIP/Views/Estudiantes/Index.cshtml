@@ -1,0 +1,31 @@
+﻿@model List<Prueba_IIP.Model.TableViewModel.EstudiantesTableViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Nuevo", "Nuevo", "Estudiantes", new { }, new { @class = "btn btn-primary" })
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Grupo</th>
+    </tr>
+    @foreach (var estudiante in Model)
+    {
+<tr>
+    <td>@estudiante.IdEstudiante</td>
+    <td>@estudiante.Nombre</td>
+    <td>@estudiante.Apellido</td>
+    <td>@estudiante.nombGrupo</td>
+    <td>
+        <button class="btn btn-warning"  onclick="document.location.href = '@Url.Content("~/Estudiantes/Edit/"+@estudiante.IdEstudiante)' ">Editar</button>
+    </td>
+    <td>
+        <button class="btn btn-danger" onclick="document.location.href = '@Url.Content("~/Estudiantes/Eliminar/"+@estudiante.IdEstudiante)' ">Eliminar</button>
+    </td>
+</tr>
+    }
+</table>
+

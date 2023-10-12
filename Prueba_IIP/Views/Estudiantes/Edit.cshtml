@@ -1,0 +1,28 @@
+﻿@model Prueba_IIP.Model.ViewModel.EditarEstudianteViewModel
+@{
+    ViewBag.Title = "Edit";
+    List<SelectListItem> listaMarcas = (List<SelectListItem>)ViewBag.marcas;
+}
+
+<h2>Edit</h2>
+
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm("Edit", "Estudiantes", FormMethod.Post, new { role = "form", }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(d => d.Id);
+        @Html.LabelFor(d => d.nombre, new { @class = "form-content" })
+        @Html.TextBoxFor(d => d.nombre, new { @class = "form-control" })
+        @Html.LabelFor(d => d.apellido, new { @class = "form-content" })
+        @Html.TextBoxFor(d => d.apellido, new { @class = "form-control" })
+        @Html.LabelFor(d => d.nombGrupo, new { @class = "form-content" })
+        @Html.DropDownList("idGrupo", listaMarcas, null, new { @class = "form-control" })
+        <br />
+
+        <div style="text-align:left;">
+            <input type="submit" class="btn btn-success" value="Guardar" />
+        </div>
+    }
+    </div>
+</div>

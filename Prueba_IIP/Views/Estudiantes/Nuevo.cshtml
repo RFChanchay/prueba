@@ -1,0 +1,28 @@
+﻿@model Prueba_IIP.Model.ViewModel.EstudianteViewModel
+@{
+    ViewBag.Title = "Nuevo";
+    List<SelectListItem> listaMarcas = (List<SelectListItem>)ViewBag.marcas;
+}
+
+<h2>Nuevo</h2>
+
+
+<div>
+    <div>
+        @using (Html.BeginForm("Nuevo", "Estudiantes", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(d => d.Nombre, new { @class = "form-content" })
+            @Html.TextBoxFor(d => d.Nombre, new { @class = "form-control" })
+            @Html.LabelFor(d => d.Apellido, new { @class = "form-content" })
+            @Html.TextBoxFor(d => d.Apellido, new { @class = "form-control" })
+            @Html.LabelFor(d => d.nombGrupo, new { @class = "form-content" })
+            @Html.DropDownList("idGrupo", listaMarcas, null, new { @class = "form-control" })
+            <br />
+
+            <div style="text-align:left;">
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
+    </div>
+</div>
